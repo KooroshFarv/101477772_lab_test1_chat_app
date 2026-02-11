@@ -4,11 +4,12 @@ import http from "http";
 import cors from "cors";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
-
+import authRoutes from './routes/auth.js'
 const app = express();
 
 app.use(cors({origin: 'http://localhost:5173'}));
 app.use(express.json());
+app.use('/api/auth', authRoutes)
 app.get('/', (req, res) => res.send('running'))
 
 const server = http.createServer(app)
